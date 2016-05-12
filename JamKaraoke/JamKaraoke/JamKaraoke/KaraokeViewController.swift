@@ -14,6 +14,7 @@ class KaraokeViewController: UIViewController {
     let alert = UIAlertController()
     var songName: String!
     var songPath: NSURL!
+    var songPlayer: AVAudioPlayer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,9 +29,13 @@ class KaraokeViewController: UIViewController {
     }
 
     func playSong(alert:UIAlertAction) {
-        
-      print("Called")
-        
+      
+        do{
+            try songPlayer = AVAudioPlayer(contentsOfURL: songPath)
+        } catch {
+            print("Woops")
+        }
+        songPlayer.play()
     }
     
     func backToList(alert:UIAlertAction) {
