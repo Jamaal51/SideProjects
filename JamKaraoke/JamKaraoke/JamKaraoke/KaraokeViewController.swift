@@ -7,20 +7,34 @@
 //
 
 import UIKit
+import AVFoundation
 
 class KaraokeViewController: UIViewController {
     
-    var mySong: Song!
+    let alert = UIAlertController()
     var songName: String!
     var songPath: NSURL!
 
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        print(songName)
-        print(songPath)
+       showAlertController()
+    }
+    
+    func showAlertController() {
+        alert.addAction(UIAlertAction(title: "Ready To Sing?", style: .Default, handler:(playSong)))
+        alert.addAction(UIAlertAction(title: "No", style: .Cancel, handler: (backToList)))
+        presentViewController(alert, animated: true, completion: nil)
         
     }
 
+    func playSong(alert:UIAlertAction) {
+        
+      print("Called")
+        
+    }
+    
+    func backToList(alert:UIAlertAction) {
+        navigationController?.popToRootViewControllerAnimated(true)
+    }
 }
 
