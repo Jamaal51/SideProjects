@@ -64,8 +64,23 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H47-6s-P5z" userLabel="CameraView">
+                                <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="H47-6s-P5z" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="Avv-CB-Y9R"/>
+                            <constraint firstItem="H47-6s-P5z" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="YXc-fe-Zp4"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="H47-6s-P5z" secondAttribute="bottom" id="t0p-eH-2YX"/>
+                            <constraint firstAttribute="trailing" secondItem="H47-6s-P5z" secondAttribute="trailing" id="wpK-c9-W5v"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="cameraView" destination="H47-6s-P5z" id="nXi-sP-28g"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
