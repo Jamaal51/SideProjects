@@ -10,13 +10,19 @@ import UIKit
 
 class SongBookTableViewController: UITableViewController {
     
-    let songs = Song().songDict
+    let song = Song()
+    //let songs = Song().songDict
+    var songList = [Dictionary<String, AnyObject>]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         title = "Songs!"
-    }
+        songList = song.initializeData()
+        
+        //songList = song.songsArray
+        
+}
 
     // MARK: - Table view data source
 
@@ -25,16 +31,17 @@ class SongBookTableViewController: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return songs.count
+        return songList.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("songListID", forIndexPath: indexPath)
 
-        let songName = Array(songs.keys)[indexPath.row]
+        var thisSong = songList[indexPath.row]
+        let songName = thisSong.removeValueForKey("songName")!
         
-        cell.textLabel?.text = songName
+        cell.textLabel!.text = String(songName)
 
         return cell
     }
@@ -49,10 +56,14 @@ class SongBookTableViewController: UITableViewController {
             let vc = segue.destinationViewController as! KaraokeViewController
             
             if let indexPath = tableView.indexPathForSelectedRow{
-                let songName = Array(songs.keys)[indexPath.row]
-                let songPath = Array(songs.values)[indexPath.row]
-                vc.songName = songName
-                vc.songPath = songPath
+                
+                let thisSong = songList[indexPath.row]
+                vc.selectedSong = thisSong
+            
+//                let songName = thisSong.removeValueForKey("songName")
+//                let songPath = thisSong.removeValueForKey("songFile")
+//                vc.songName = String(songName!)
+//                vc.songPath = songPath
             }
             
         }
