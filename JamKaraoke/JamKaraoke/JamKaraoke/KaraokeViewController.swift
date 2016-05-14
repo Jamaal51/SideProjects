@@ -142,18 +142,19 @@ class KaraokeViewController: UIViewController {
         for lyricTime in lyricsTimeDict {
             if timeString == lyricTime.0{
                 lyricsLabel.text = lyricTime.1
+                lyricsTimeDict.removeValueForKey(lyricTime.0)
             }
         }
     }
     
     func backToList(alert:UIAlertAction) {
-        songPlayer.stop()
+        songPlayer?.stop()
         navigationController?.popToRootViewControllerAnimated(true)
     }
     
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
-        songPlayer.stop()
+        songPlayer?.stop()
         timer.invalidate()
     }
 }

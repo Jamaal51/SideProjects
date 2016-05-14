@@ -51,7 +51,7 @@ class SongBookTableViewController: UITableViewController {
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     
+        
         if (segue.identifier == "segueToKaraokeVC"){
             let vc = segue.destinationViewController as! KaraokeViewController
             
@@ -59,15 +59,9 @@ class SongBookTableViewController: UITableViewController {
                 
                 let thisSong = songList[indexPath.row]
                 vc.selectedSong = thisSong
-            
-//                let songName = thisSong.removeValueForKey("songName")
-//                let songPath = thisSong.removeValueForKey("songFile")
-//                vc.songName = String(songName!)
-//                vc.songPath = songPath
             }
             
         }
     }
-
-
+    
 }
