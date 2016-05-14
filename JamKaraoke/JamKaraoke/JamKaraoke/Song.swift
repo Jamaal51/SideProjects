@@ -22,12 +22,20 @@ class Song {
     
     func initializeData() -> [Dictionary<String, AnyObject>]{
         
-        let journeyLyrics: [String] = ["Just a small town girl living in a lonely world", "She took the midnight train going anywhere"]
-        let brunoLyrics: [String] = ["This hit, that ice cold", "Michele Pfifer, that white gold"]
+        let journeyLyrics: [String:String] = [
+            "00:17":"Just a small town girl living in a lonely world",
+            "00:24": "She took the midnight train going anywhere"
+        ]
+        
+        
+        let brunoLyrics: [String:String] = [
+            "00:20":"This hit, that ice cold",
+            "00:10":"Michele Pfifer, that white gold"
+        ]
         
         let dontStopBelievin : [String:AnyObject] = [
             "songName" : String("Don't Stop Believin"),
-            "songFile": returnURLPath("dontstopbelievinjourney"),
+            "songFile" : returnURLPath("dontstopbelievinjourney"),
             "songLyrics" :  journeyLyrics
         ]
         

@@ -13,11 +13,19 @@ class KaraokeViewController: UIViewController {
     
     @IBOutlet weak var cameraView: UIView!
     @IBOutlet weak var microphoneImageView: UIImageView!
+    @IBOutlet weak var noteImageView1: UIImageView!
+    @IBOutlet weak var noteImageView2: UIImageView!
+    @IBOutlet weak var lyricsLabel: UILabel!
+    
+    var timer = NSTimer()
     
     var selectedSong: [String:AnyObject]!
     var songName: String!
     var songPath: NSURL!
     var lyricsArray: [String]!
+    var songTime = String()
+    var songTimeTotal = NSTimeInterval()
+    var lyricsTimeDict = [String:String]()
 
 //    let captureSession = AVCaptureSession()
     var captureDevice: AVCaptureDevice?
@@ -29,10 +37,11 @@ class KaraokeViewController: UIViewController {
         super.viewDidLoad()
         
         songName = selectedSong.removeValueForKey("songName")! as! String
+        title = String(songName!)
         songPath = selectedSong.removeValueForKey("songFile")! as! NSURL
-        lyricsArray = selectedSong.removeValueForKey("songLyrics")! as! [String]
+        lyricsTimeDict = selectedSong.removeValueForKey("songLyrics")! as! [String:String]
         
-        print(lyricsArray)
+        lyricsLabel.text = "TEST"
         
         showAlertController()
         startLiveVideo()
@@ -67,7 +76,9 @@ class KaraokeViewController: UIViewController {
             cameraView.layer.addSublayer(videoLayer)
             self.view.addSubview(cameraView)
             self.cameraView.addSubview(microphoneImageView)
-            
+            self.cameraView.addSubview(noteImageView1)
+            self.cameraView.addSubview(noteImageView2)
+            self.cameraView.addSubview(lyricsLabel) 
             captureSession.startRunning()
         }
         
@@ -89,12 +100,61 @@ class KaraokeViewController: UIViewController {
             print("Woops")
         }
         songPlayer.play()
-        //title = String(songPlayer.currentTime)
-        title = String(songName!)
+        
+        //songTime = Double(songPlayer.duration)
+        //songTimeTotal = songPlayer.duration
+        
+        songTimeTotal = 0.0
+        
+        timer = NSTimer(
+            timeInterval: 1,
+                  target: self,
+                  selector: #selector(fireTimer),
+                userInfo: nil,
+                 repeats: true
+        )
+        
+        NSRunLoop.currentRunLoop().addTimer(timer, forMode: NSRunLoopCommonModes)
+        
+        timer.fire()
+    }
+    
+    func fireTimer(timer:NSTimer){
+        let interval: NSTimeInterval = 1
+        songTimeTotal += interval
+        
+        songTime = stringFromTimeInterval(songTimeTotal)
+        
+        changeLyricsLabel(songTime)
+        
+        print(songTime)
+    }
+    
+    func stringFromTimeInterval(interval: NSTimeInterval) -> String {
+        let interval = Int(interval)
+        let seconds = interval % 60
+        let minutes = (interval / 60) % 60
+        return String(format: "%02d:%02d", minutes, seconds)
+    }
+    
+    func changeLyricsLabel(timeString:String) {
+        print("passed")
+        for lyricTime in lyricsTimeDict {
+            if timeString == lyricTime.0{
+                lyricsLabel.text = lyricTime.1
+            }
+        }
     }
     
     func backToList(alert:UIAlertAction) {
+        songPlayer.stop()
         navigationController?.popToRootViewControllerAnimated(true)
+    }
+    
+    override func viewDidDisappear(animated: Bool) {
+        super.viewDidDisappear(animated)
+        songPlayer.stop()
+        timer.invalidate()
     }
 }
 
