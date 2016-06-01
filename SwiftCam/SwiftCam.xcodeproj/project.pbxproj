@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		7882E9C01CECA2EF0040746B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882E9BF1CECA2EF0040746B /* AppDelegate.swift */; };
-		7882E9C21CECA2EF0040746B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882E9C11CECA2EF0040746B /* ViewController.swift */; };
+		7882E9C21CECA2EF0040746B /* SwiftCamViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7882E9C11CECA2EF0040746B /* SwiftCamViewController.swift */; };
 		7882E9C51CECA2EF0040746B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7882E9C31CECA2EF0040746B /* Main.storyboard */; };
 		7882E9C71CECA2EF0040746B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7882E9C61CECA2EF0040746B /* Assets.xcassets */; };
 		7882E9CA1CECA2EF0040746B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7882E9C81CECA2EF0040746B /* LaunchScreen.storyboard */; };
@@ -18,7 +18,7 @@
 /* Begin PBXFileReference section */
 		7882E9BC1CECA2EF0040746B /* SwiftCam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftCam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7882E9BF1CECA2EF0040746B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		7882E9C11CECA2EF0040746B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		7882E9C11CECA2EF0040746B /* SwiftCamViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftCamViewController.swift; sourceTree = "<group>"; };
 		7882E9C41CECA2EF0040746B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		7882E9C61CECA2EF0040746B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7882E9C91CECA2EF0040746B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -56,15 +56,23 @@
 		7882E9BE1CECA2EF0040746B /* SwiftCam */ = {
 			isa = PBXGroup;
 			children = (
-				7882E9BF1CECA2EF0040746B /* AppDelegate.swift */,
-				7882E9C11CECA2EF0040746B /* ViewController.swift */,
+				7882E9C11CECA2EF0040746B /* SwiftCamViewController.swift */,
 				7882E9D11CECA7E20040746B /* SwiftCamPreviewView.swift */,
 				7882E9C31CECA2EF0040746B /* Main.storyboard */,
+				78BFD9E31CEE2A9D004F9FCA /* Supporting Files */,
+			);
+			path = SwiftCam;
+			sourceTree = "<group>";
+		};
+		78BFD9E31CEE2A9D004F9FCA /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				7882E9BF1CECA2EF0040746B /* AppDelegate.swift */,
 				7882E9C61CECA2EF0040746B /* Assets.xcassets */,
 				7882E9C81CECA2EF0040746B /* LaunchScreen.storyboard */,
 				7882E9CB1CECA2EF0040746B /* Info.plist */,
 			);
-			path = SwiftCam;
+			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,7 +146,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7882E9C21CECA2EF0040746B /* ViewController.swift in Sources */,
+				7882E9C21CECA2EF0040746B /* SwiftCamViewController.swift in Sources */,
 				7882E9D21CECA7E20040746B /* SwiftCamPreviewView.swift in Sources */,
 				7882E9C01CECA2EF0040746B /* AppDelegate.swift in Sources */,
 			);
@@ -290,6 +298,7 @@
 				7882E9D01CECA2EF0040746B /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

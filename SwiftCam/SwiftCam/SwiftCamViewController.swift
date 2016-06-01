@@ -10,7 +10,7 @@ import UIKit
 import AVFoundation
 import Photos
 
-class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
+class SwiftCamViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
 
 // MARK: Life Cycle
     
@@ -33,16 +33,24 @@ class ViewController: UIViewController, AVCaptureFileOutputRecordingDelegate {
         return true
     }
     
+
+// MARK: KVO and Notifications
     
+    
+    
+// MARK: Actions
 
     
-// MARK: File Capture Delegate
+// MARK: File Output Recording Delegate
     func captureOutput(captureOutput: AVCaptureFileOutput!, didStartRecordingToOutputFileAtURL fileURL: NSURL!, fromConnections connections: [AnyObject]!) {
         
     }
     func captureOutput(captureOutput: AVCaptureFileOutput!, didFinishRecordingToOutputFileAtURL outputFileURL: NSURL!, fromConnections connections: [AnyObject]!, error: NSError!) {
         
     }
+
+// MARK: Device Configurations
     
+
 }
 

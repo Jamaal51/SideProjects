@@ -13,5 +13,12 @@ class SwiftCamPreviewView: UIView {
 
     var session: AVCaptureSession?
     
+    private func setSession(session:AVCaptureSession){
+        
+        let previewLayer = AVCaptureVideoPreviewLayer()
+        
+        previewLayer.session = session
+        
+    }
 
 }
